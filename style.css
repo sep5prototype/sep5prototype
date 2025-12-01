@@ -1,0 +1,247 @@
+/* ========= GLOBAL RESET ========= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+/* ========= BASE STYLES ========= */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(
+    circle at top,
+    #e5edff 0,
+    #f5f7ff 45%,
+    #f9fbff 100%
+  );
+  color: #0f172a;
+}
+/* ========= APP LAYOUT ========= */
+.app {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  display: grid;
+  gap: 2rem;
+}
+/* Header skal minde om “hero” i eksemplet */
+header {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+header h1 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: clamp(2.4rem, 3vw, 2.8rem);
+  letter-spacing: 0.02em;
+}
+header p {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #64748b;
+}
+/* Lille badge over overskriften – du kan evt. tilføje en div.app-tag i HTML */
+.app-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.08);
+  color: #4f46e5;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+/* ========= PANELS (CARDS) ========= */
+.input-panel,
+.output-panel {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  padding: 1.8rem 1.8rem 1.6rem;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+/* To kolonner på større skærme */
+@media (min-width: 880px) {
+  .app {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    align-items: flex-start;
+  }
+  .input-panel,
+  .output-panel {
+    height: calc(100vh - 7rem);
+    overflow: auto;
+  }
+}
+/* ========= OVERSKRIFTER ========= */
+h2 {
+  margin: 0 0 1.2rem;
+  font-size: 1.35rem;
+}
+h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+}
+/* ========= FORM FIELDS ========= */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+.field-inline {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .field-inline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+label small {
+  display: block;
+  font-weight: 400;
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+/* Inputs & textarea – lyse med bløde kanter */
+textarea,
+input[type="number"] {
+  background: #f8fafc;
+  border-radius: 0.9rem;
+  border: 1px solid #d0d7e2;
+  color: #0f172a;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  resize: vertical;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+textarea::placeholder,
+input[type="number"]::placeholder {
+  color: #c4cfde;
+}
+textarea:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.3),
+    0 12px 30px rgba(15, 23, 42, 0.08);
+}
+/* ========= BUTTON ========= */
+button {
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  background: linear-gradient(90deg, #4f46e5, #6366f1, #0ea5e9);
+  background-size: 200% 100%;
+  color: #f9fafb;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.35);
+  transition: background-position 0.2s ease, transform 0.08s ease,
+    box-shadow 0.08s ease, opacity 0.15s ease;
+}
+button:hover:not(:disabled) {
+  background-position: 100% 0;
+  transform: translateY(-1px);
+  box-shadow: 0 22px 55px rgba(37, 99, 235, 0.4);
+}
+button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.3);
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  box-shadow: none;
+}
+/* ========= STATUS-TEXT ========= */
+.status {
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  color: #64748b;
+}
+/* ========= OUTPUT-PANEL ========= */
+#output-empty {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin-top: 0.4rem;
+}
+.plan-output section {
+  margin-bottom: 1.4rem;
+}
+.plan-output h3 {
+  font-weight: 600;
+}
+/* ========= TAGS / BADGES ========= */
+.tag {
+  display: inline-block;
+  padding: 0.08rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.78rem;
+  margin-left: 0.4rem;
+  text-transform: lowercase;
+}
+.badge-high {
+  border-color: #fb923c;
+  background: #fff7ed;
+  color: #ea580c;
+}
+.badge-medium {
+  border-color: #facc15;
+  background: #fefce8;
+  color: #ca8a04;
+}
+.badge-low {
+  border-color: #22c55e;
+  background: #ecfdf5;
+  color: #16a34a;
+}
+/* ========= LISTS ========= */
+ul {
+  padding-left: 1.2rem;
+  margin: 0.2rem 0;
+}
+/* ========= TABLE (uge-for-uge studieplan) ========= */
+.plan-output table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+.plan-output thead th {
+  padding: 0.55rem 0.4rem;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 1px solid #e2e8f0;
+}
+.plan-output tbody td {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+/* Milepæle-liste inde i tabellen */
+.plan-output td ul {
+  margin: 0.2rem 0 0;
+}
+/* ========= UTILITIES ========= */
+.hidden {
+  display: none;
+}

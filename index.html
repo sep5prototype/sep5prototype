@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <title>Study Helper - AI Studieplan</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <div class="app-tag">📘 AI-drevet studieplanlægning</div>
+        <h1>Study Helper</h1>
+        <p>
+          Få en personlig studieplan med prioriteringer, forudsætninger og
+          ugeplan - tilpasset dine fag og deadlines.
+        </p>
+      </header>
+      <section class="input-panel">
+        <h2>1. Indtast dine oplysninger</h2>
+        <form id="plan-form">
+          <div class="field">
+            <label for="topics">
+              Kursusemner / fag
+              <small>(ét pr. linje - fx “WEB1: Forms & Validation”)</small>
+            </label>
+            <textarea id="topics" rows="4" required></textarea>
+          </div>
+          <div class="field">
+            <label for="deadlines">
+              Deadlines & vigtige datoer
+              <small
+                >(fx “2025-12-10: WEB1 eksamen - fokus på JavaScript”)</small
+              >
+            </label>
+            <textarea id="deadlines" rows="3"></textarea>
+          </div>
+          <div class="field-inline">
+            <div class="field">
+              <label for="weeks"> Studieperiode (uger) </label>
+              <input
+                id="weeks"
+                type="number"
+                min="1"
+                max="52"
+                value="8"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="hours"> Timer til rådighed pr. uge </label>
+              <input
+                id="hours"
+                type="number"
+                min="1"
+                max="80"
+                value="10"
+                required
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label for="context">
+              Ekstra kontekst
+              <small>(fx læringsstil, svære emner, andre forpligtelser)</small>
+            </label>
+            <textarea id="context" rows="3"></textarea>
+          </div>
+          <button type="submit" id="generate-btn">Generér studieplan</button>
+          <p id="status" class="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="output-panel">
+        <h2>2. Din studieplan</h2>
+        <div id="output-empty">
+          Indtast dine oplysninger og klik “Generér studieplan”.
+        </div>
+        <div id="plan-output" class="plan-output hidden">
+          <section>
+            <h3>Oversigt</h3>
+            <div id="overview"></div>
+          </section>
+          <section>
+            <h3>Emneprioriteter</h3>
+            <div id="priorities"></div>
+          </section>
+          <section>
+            <h3>Forudsætningskort (prerequisites)</h3>
+            <div id="prerequisites"></div>
+          </section>
+          <section>
+            <h3>Uge-for-uge studieplan</h3>
+            <div id="weekly-schedule"></div>
+          </section>
+          <section>
+            <h3>Risiko-flag</h3>
+            <div id="risk-flags"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
