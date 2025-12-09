@@ -77,5 +77,5 @@ app.post("/api/chat", function (req, res) {
 
 // Til sidst starter vi serveren, så den kører på localhost:3000
 app.listen(PORT, function () {
-  console.log("Server kører på http://localhost:" + PORT);
+  console.log("Server runs on http://localhost:" + PORT);
 });
