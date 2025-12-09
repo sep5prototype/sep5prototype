@@ -68,6 +68,13 @@ function buildPrompt(data) {
     '    { "type": string, "description": string, "suggestion": string }\n' +
     "  ]\n" +
     "}\n\n" +
+    "INTERPRETATION RULES:\n" +
+    "- The field 'Hours per week' is the average number of hours the student can study.\n" +
+    "- Distribute the total hours across the weeks based on deadlines and priorities.\n" +
+    "- 'hours_planned' for each week should usually be close to this average,\n" +
+    "  but you MUST vary it across weeks (some weeks lower, some weeks higher).\n" +
+    "- The sum of all 'hours_planned' values should be consistent with 'total_hours'\n" +
+    "  and roughly match weeks * hours per week.\n\n" +
     "DATA:\n" +
     "- Topics: " +
     JSON.stringify(data.topics) +
