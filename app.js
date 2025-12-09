@@ -302,8 +302,8 @@ form.addEventListener("submit", function (event) {
 
   // Reset visning og status ved nyt submit
   statusEl.textContent = "Generating study plan…";
-  outputEmpty.classList.add("hidden");
-  planOutput.classList.remove("hidden");
+  outputEmpty.classList.remove("hidden");
+  planOutput.classList.add("hidden");
 
   // Saml emner
   const topics = [];
