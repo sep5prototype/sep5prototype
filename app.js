@@ -276,7 +276,7 @@ function parsePlan(raw) {
       try {
         return JSON.parse(cut);
       } catch (innerErr) {
-        console.error("Could not parse JSON after slicing:", innerErr, cut);
+        console.error("Could not parse JSON after cutting:", innerErr, cut);
       }
     }
 
